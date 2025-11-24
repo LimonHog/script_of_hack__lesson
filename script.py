@@ -32,7 +32,7 @@ def get_schoolkid(full_name):
 	
 
 def main():
-    parser = argparse.ArgumentParser(description='для выражения похвалы ученику, удаления его плохих оценок и замечаний')
+    parser = argparse.ArgumentParser(description='Для выражения похвалы ученику, удаления его плохих оценок и замечаний')
     parser.add_argument("subject", type=str, help='Название предмета (например: Музыка)')
     parser.add_argument("name", type=str, help='Имя ученика (например: Огурцов Артём)')
     args = parser.parse_args()
@@ -40,7 +40,7 @@ def main():
     subject = args.subject
 
     commendations = [
-        'Monqueu!', 
+        'Молодец!', 
         'Отлично!', 
         'Хорошо!', 
         'Гораздо лучше, чем я ожидал!', 
@@ -48,8 +48,7 @@ def main():
         'Великолепно!', 
         'Прекрасно!', 
         'Ты меня очень обрадовал!', 
-        'Именно этого я давно ждал от тебя!', 
-        'Сказано здорово - просто и ясно!', 
+        'Именно этого я давно ждал от тебя!',  
         'Ты, как всегда, точен!', 
         'Очень хороший ответ!'
     ]
