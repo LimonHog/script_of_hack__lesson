@@ -22,7 +22,7 @@ def create_commendation(schoolkid, subject, commendation):
 
 def get_schoolkid(full_name):
     try:  
-        return Schoolkid.objects.filter(full_name__contains=full_name)
+        return Schoolkid.objects.get(full_name__contains=full_name)
     except Schoolkid.MultipleObjectsReturned:
         print(f"Найдено несколько учеников по запросу '{full_name}'. Уточните ФИО.")
         return
