@@ -12,7 +12,7 @@ def  fix_marks(schoolkid):
 
 
 def create_commendation(schoolkid, subject, commendation):
-    student_lessons = Lesson.objects.filter(year_of_study=schoolkid.year_of_study, group_letter=schoolkid.group_letter, subject__title__contains=subject)
+    student_lessons = Lesson.objects.filter(year_of_study=schoolkid.year_of_study, group_letter=schoolkid.group_letter, subject__title__contains=subject).first()
     if not student_lessons.exists():
         print(f"Уроки по предмету '{subject}' для {schoolkid.full_name} не найдены.")
         return 
