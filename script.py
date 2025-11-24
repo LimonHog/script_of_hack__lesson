@@ -20,7 +20,7 @@ def create_commendation(schoolkid, subject, commendation):
     Commendation.objects.create(teacher=student_lessons.teacher, created=student_lessons.date, subject=student_lessons.subject, text=commendation, schoolkid=schoolkid)
 
 
-def get_client_name(full_name):
+def get_schoolkid(full_name):
     try:  
         return Schoolkid.objects.filter(full_name__contains=full_name)
     except Schoolkid.MultipleObjectsReturned:
@@ -34,9 +34,9 @@ def get_client_name(full_name):
 def main():
     parser = argparse.ArgumentParser(description='для выражения похвалы ученику, удаления его плохих оценок и замечаний')
     parser.add_argument("subject", type=str, help='Название предмета (например: Музыка)')
-    parser.add_argument("full_name", type=str, help='Имя ученика (например: Огурцов Артём)')
+    parser.add_argument("name", type=str, help='Имя ученика (например: Огурцов Артём)')
     args = parser.parse_args()
-    full_name = args.full_name
+    name = args.name
     subject = args.subject
 
     commendations = [
@@ -54,7 +54,7 @@ def main():
         'Очень хороший ответ!'
     ]
 
-    client_name = get_client_name(full_name)
+    client_name = get_schoolkid(name)
     fix_marks(client_name[0])
     remove_chastisements(client_name[0])
     create_commendation(client_name[0], subject, choice(commendations))
